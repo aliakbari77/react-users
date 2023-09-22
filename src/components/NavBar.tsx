@@ -14,15 +14,18 @@ import {
   MenuGroup,
   MenuItem,
   MenuList,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { AiOutlineQuestionCircle, AiOutlineUser } from "react-icons/ai";
-import { BsFillMoonFill, BsSearch } from "react-icons/bs";
+import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
 import { MdPayment } from "react-icons/md";
 import { GrDocumentText } from "react-icons/gr";
-import {BiLogOut} from "react-icons/bi"
+import { BiLogOut } from "react-icons/bi";
 
 const NavBar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const iconSize = {
     fontSize: "20px",
   };
@@ -33,7 +36,9 @@ const NavBar = () => {
       paddingY={2}
       boxShadow="0px 0px 3px gray"
     >
-      <Heading as="h3" fontSize={24}>Users</Heading>
+      <Heading as="h3" fontSize={24}>
+        Users
+      </Heading>
       <InputGroup marginX={8}>
         <InputLeftElement pointerEvents="none">
           <BsSearch color="gray.300" />
@@ -41,9 +46,13 @@ const NavBar = () => {
         <Input type="tel" placeholder="Search..." borderRadius={25} />
       </InputGroup>
       <HStack>
-        <BsFillMoonFill fontSize="20px" />
+        {colorMode === "light" ? (
+          <BsFillMoonFill {...iconSize} onClick={toggleColorMode} />
+        ) : (
+          <BsFillSunFill {...iconSize} onClick={toggleColorMode} />
+        )}
         <Menu>
-          <MenuButton borderLeft="1px solid black">
+          <MenuButton borderLeft={colorMode === "light" ? "1px solid black" :  "1px solid white"}>
             <AvatarGroup marginLeft={2} spacing="1rem">
               <Avatar bg="teal.500" size="sm" />
             </AvatarGroup>
@@ -57,12 +66,14 @@ const NavBar = () => {
             </MenuGroup>
             <MenuDivider />
             <MenuGroup title="Help">
-              <MenuItem icon={<GrDocumentText {...iconSize}/>}>Docs</MenuItem>
-              <MenuItem icon={<AiOutlineQuestionCircle {...iconSize}/>}>FAQ</MenuItem>
+              <MenuItem icon={<GrDocumentText {...iconSize} />}>Docs</MenuItem>
+              <MenuItem icon={<AiOutlineQuestionCircle {...iconSize} />}>
+                FAQ
+              </MenuItem>
             </MenuGroup>
             <MenuDivider />
             <MenuGroup>
-                <MenuItem icon={<BiLogOut {...iconSize}/>}>Logout</MenuItem>
+              <MenuItem icon={<BiLogOut {...iconSize} />}>Logout</MenuItem>
             </MenuGroup>
           </MenuList>
         </Menu>
