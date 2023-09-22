@@ -16,12 +16,13 @@ import {
   MenuList,
   useColorMode,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import { AiOutlineQuestionCircle, AiOutlineUser } from "react-icons/ai";
 import { BsFillMoonFill, BsFillSunFill, BsSearch } from "react-icons/bs";
 import { MdPayment } from "react-icons/md";
 import { GrDocumentText } from "react-icons/gr";
 import { BiLogOut } from "react-icons/bi";
+import SearchInput from "./SearchInput";
 
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -39,13 +40,8 @@ const NavBar = () => {
       <Heading as="h3" fontSize={24}>
         Users
       </Heading>
-      <InputGroup marginX={8}>
-        <InputLeftElement pointerEvents="none">
-          <BsSearch color="gray.300" />
-        </InputLeftElement>
-        <Input type="tel" placeholder="Search..." borderRadius={25} />
-      </InputGroup>
-      <HStack>
+      <SearchInput/>
+      <HStack marginLeft={16}>
         {colorMode === "light" ? (
           <BsFillMoonFill {...iconSize} onClick={toggleColorMode} />
         ) : (
