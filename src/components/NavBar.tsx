@@ -7,12 +7,25 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Button,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
 } from "@chakra-ui/react";
 import React from "react";
-import { AiOutlineUser } from "react-icons/ai";
+import { AiOutlineQuestionCircle, AiOutlineUser } from "react-icons/ai";
 import { BsFillMoonFill, BsSearch } from "react-icons/bs";
+import { MdPayment } from "react-icons/md";
+import { GrDocumentText } from "react-icons/gr";
+import {BiLogOut} from "react-icons/bi"
 
 const NavBar = () => {
+  const iconSize = {
+    fontSize: "20px",
+  };
   return (
     <HStack
       justifyContent="space-between"
@@ -20,7 +33,7 @@ const NavBar = () => {
       paddingY={2}
       boxShadow="0px 0px 3px gray"
     >
-      <Heading>Users</Heading>
+      <Heading as="h3" fontSize={24}>Users</Heading>
       <InputGroup marginX={8}>
         <InputLeftElement pointerEvents="none">
           <BsSearch color="gray.300" />
@@ -29,14 +42,30 @@ const NavBar = () => {
       </InputGroup>
       <HStack>
         <BsFillMoonFill fontSize="20px" />
-        <AvatarGroup
-          paddingLeft={4}
-          marginLeft={4}
-          spacing="1rem"
-          borderLeft="1px solid black"
-        >
-          <Avatar bg="teal.500" size="sm" />
-        </AvatarGroup>
+        <Menu>
+          <MenuButton borderLeft="1px solid black">
+            <AvatarGroup marginLeft={2} spacing="1rem">
+              <Avatar bg="teal.500" size="sm" />
+            </AvatarGroup>
+          </MenuButton>
+          <MenuList>
+            <MenuGroup title="Profile">
+              <MenuItem icon={<AiOutlineUser {...iconSize} />}>
+                My Account
+              </MenuItem>
+              <MenuItem icon={<MdPayment {...iconSize} />}>Payments </MenuItem>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup title="Help">
+              <MenuItem icon={<GrDocumentText {...iconSize}/>}>Docs</MenuItem>
+              <MenuItem icon={<AiOutlineQuestionCircle {...iconSize}/>}>FAQ</MenuItem>
+            </MenuGroup>
+            <MenuDivider />
+            <MenuGroup>
+                <MenuItem icon={<BiLogOut {...iconSize}/>}>Logout</MenuItem>
+            </MenuGroup>
+          </MenuList>
+        </Menu>
       </HStack>
     </HStack>
   );
