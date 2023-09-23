@@ -23,33 +23,32 @@ interface Props {
 
 const PostCard = ({ post }: Props) => {
 	return (
-		<Card>
+		<Card height={"340px"}>
 			<CardHeader>
 				<Heading size="md">{post.title}</Heading>
 			</CardHeader>
 			<CardBody>
 				<Stack>
 					<Text>{post.body}</Text>
-                    <Text>1402.12.25</Text>
+					<Text textAlign={"right"}>1402.12.25</Text>
 				</Stack>
-				<Divider />
-				<CardFooter>
-						<ButtonGroup>
-							<Button variant="ghost" colorScheme="red">
-								<AiOutlineHeart fontSize={"24px"} />
-								<Text marginX={2}>23</Text>
-							</Button>
-							<Button variant="ghost" colorScheme="blue">
-								<FaRegCommentDots fontSize={"24px"} />
-								<Text marginX={2}>14</Text>
-							</Button>
-							<Button variant="ghost">
-								<AiOutlineEdit fontSize={"24px"} />
-							</Button>
-						</ButtonGroup>
-                        
-				</CardFooter>
 			</CardBody>
+			<Divider />
+			<CardFooter>
+				<ButtonGroup>
+					<Button variant="ghost" colorScheme="red">
+						<AiOutlineHeart fontSize={"24px"} />
+						<Text marginX={2}>23</Text>
+					</Button>
+					<Button variant="ghost" colorScheme="blue">
+						<FaRegCommentDots fontSize={"24px"} />
+						<Text marginX={2}>14</Text>
+					</Button>
+					<Button variant="ghost">
+						<AiOutlineEdit fontSize={"24px"} />
+					</Button>
+				</ButtonGroup>
+			</CardFooter>
 		</Card>
 	);
 };
