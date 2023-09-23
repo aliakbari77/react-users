@@ -6,7 +6,7 @@ const Logo = () => {
 		<HStack>
 			<FiUsers fontSize={24} />
 			<Heading as="h3" fontSize={24}>
-				Users
+				LoGo
 			</Heading>
 		</HStack>
 	);
