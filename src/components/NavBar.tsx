@@ -26,10 +26,9 @@ import SearchInput from "./SearchInput";
 import AvatarMenu from "./AvatarMenu";
 import { FiUsers } from "react-icons/fi";
 import Logo from "./Logo";
+import SwitchColor from "./SwitchColor";
 
 const NavBar = () => {
-	const { colorMode, toggleColorMode } = useColorMode();
-
 	const iconSize = {
 		fontSize: "20px",
 	};
@@ -40,14 +39,10 @@ const NavBar = () => {
 			paddingY={2}
 			boxShadow="0px 0px 3px gray"
 		>
-			<Logo/>
+			<Logo />
 			<SearchInput />
 			<HStack marginLeft={16}>
-				{colorMode === "light" ? (
-					<BsFillMoonFill {...iconSize} onClick={toggleColorMode} />
-				) : (
-					<BsFillSunFill {...iconSize} onClick={toggleColorMode} />
-				)}
+				<SwitchColor iconSize={iconSize} />
 				<AvatarMenu iconSize={iconSize} />
 			</HStack>
 		</HStack>
