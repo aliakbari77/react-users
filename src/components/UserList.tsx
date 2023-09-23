@@ -11,13 +11,17 @@ import React, { useEffect, useState } from "react";
 import { MdCheckCircle, MdSettings } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 
-interface User {
+export interface User {
 	id: number;
 	name: string;
 	email: string;
 }
 
-const UserList = () => {
+interface Props {
+	onSelectUser: (user: User) => void;
+}
+
+const UserList = ({ onSelectUser }: Props) => {
 	const [users, setUsers] = useState<User[]>([]);
 	const [isLoading, setLoading] = useState(false);
 	useEffect(() => {
@@ -32,23 +36,23 @@ const UserList = () => {
 				console.log(err);
 				setLoading(false);
 			});
-        axios.get("https://jsonplaceholder.typicode.com/posts", {params:{
-            userId: 1
-        }}).then(res => {
-            console.log(res)
-        }).catch(err => {
-            console.log(err)
-        })
 	}, []);
 	return (
 		<>
 			<Box padding={4}>
-				<Heading marginBottom={4} fontSize="24px">Users List</Heading>
+				<Heading marginBottom={4} fontSize="24px">
+					Users List
+				</Heading>
 				<List spacing={8}>
 					{users.map((user) => (
 						<ListItem key={user.id}>
 							<ListIcon as={AiOutlineUser} fontSize="24px" />
-							<Button variant="link">{user.name}</Button>
+							<Button
+								variant="link"
+								onClick={() => onSelectUser(user)}
+							>
+								{user.name}
+							</Button>
 						</ListItem>
 					))}
 				</List>
