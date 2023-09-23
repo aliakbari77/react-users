@@ -34,7 +34,7 @@ const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
 			>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Create your account</ModalHeader>
+					<ModalHeader>Add User</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<FormControl>
@@ -49,7 +49,7 @@ const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
 					</ModalBody>
 
 					<ModalFooter>
-						<Button colorScheme="blue" mr={3}>
+						<Button colorScheme="blue" mr={3} onClick={onClose}>
 							Save
 						</Button>
 						<Button onClick={onClose}>Cancel</Button>

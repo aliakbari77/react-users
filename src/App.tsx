@@ -14,6 +14,7 @@ import NavBar from "./components/NavBar";
 import UserList, { User } from "./components/UserList";
 import PostGrid from "./components/PostGrid";
 import AddUserModal from "./components/AddUserModal";
+import PostHeading from "./components/PostHeading";
 
 export interface PostQuery {
 	userId: number | null;
@@ -48,9 +49,7 @@ function App() {
 				<GridItem area="main">
 					<HStack justify="space-between">
 						<Box padding={4}>
-							<Heading>
-								{"Posts: " + userSelected.name || "All Posts"}
-							</Heading>
+							<PostHeading user={userSelected}/>
 						</Box>
 						<ButtonGroup padding={4}>
 							<Button onClick={onOpen}>Add User</Button>

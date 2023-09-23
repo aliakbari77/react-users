@@ -1,11 +1,14 @@
+import { Heading } from "@chakra-ui/react";
 import React from "react";
+import { User } from "./UserList";
 
 interface Props {
-	userId: number;
+	user: User;
 }
 
-const PostHeading = ({ userId }: Props) => {
-	return <div>PostHeading</div>;
+const PostHeading = ({ user }: Props) => {
+    const heading = user.name ? `Posts: ${user.name || ""}` : "Posts"
+	return <Heading>{heading}</Heading>;
 };
 
 export default PostHeading;
