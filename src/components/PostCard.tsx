@@ -1,6 +1,20 @@
 import React from "react";
 import { Post } from "./PostGrid";
-import { Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+    Badge,
+	Button,
+	ButtonGroup,
+	Card,
+	CardBody,
+	CardFooter,
+	CardHeader,
+	Divider,
+	Heading,
+	Stack,
+	Text,
+} from "@chakra-ui/react";
+import { AiOutlineEdit, AiOutlineHeart } from "react-icons/ai";
+import {FaRegCommentDots} from "react-icons/fa"
 
 interface Props {
 	post: Post;
@@ -12,27 +26,27 @@ const PostCard = ({ post }: Props) => {
 			<CardHeader>
 				<Heading size="md">{post.title}</Heading>
 			</CardHeader>
-            <CardBody>
-                <Stack>
-                    <Text>
-                        {post.body}
-                    </Text>
-                </Stack>
-                <Divider/>
-                <CardFooter>
-                    <ButtonGroup>
-                        <Button variant="solid" colorScheme="red">
-                            Like
+			<CardBody>
+				<Stack>
+					<Text>{post.body}</Text>
+				</Stack>
+				<Divider />
+				<CardFooter>
+					<ButtonGroup>
+						<Button variant="ghost" colorScheme="red">
+							<AiOutlineHeart fontSize={"24px"}/>
+                            <Text marginX={2}>23</Text>
+						</Button>
+						<Button variant="ghost" colorScheme="blue">
+                            <FaRegCommentDots fontSize={"24px"}/>
+							<Text marginX={2}>14</Text>
+						</Button>
+						<Button variant="ghost">
+                            <AiOutlineEdit fontSize={"24px"}/>
                         </Button>
-                        <Button variant="solid" colorScheme="blue">
-                            Comment
-                        </Button>
-                        <Button variant="outline">
-                            Edit
-                        </Button>
-                    </ButtonGroup>
-                </CardFooter>
-            </CardBody>
+					</ButtonGroup>
+				</CardFooter>
+			</CardBody>
 		</Card>
 	);
 };
