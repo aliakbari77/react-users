@@ -2,6 +2,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import { useState } from "react";
 import NavBar from "./components/NavBar";
 import UserList from "./components/UserList";
+import PostGrid from "./components/PostGrid";
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -21,7 +22,9 @@ function App() {
 					<UserList />
 				</GridItem>
 			</Show>
-			<GridItem area="main">main</GridItem>
+			<GridItem area="main">
+        <PostGrid/>
+      </GridItem>
 		</Grid>
 	);
 }
