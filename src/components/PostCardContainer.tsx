@@ -1,16 +1,16 @@
-import { Box } from '@chakra-ui/react'
-import React, { ReactNode } from 'react'
+import { Box } from "@chakra-ui/react";
+import React, { ReactNode } from "react";
 
-interface Props{
-    children: ReactNode 
+interface Props {
+	children: ReactNode;
 }
 
-const PostCardContainer = ({children}: Props) => {
-  return (
-    <Box>
-        {children}
-    </Box>
-  )
-}
+const PostCardContainer = ({ children }: Props) => {
+	return (
+		<Box>
+			{children}
+		</Box>
+	);
+};
 
-export default PostCardContainer
+export default PostCardContainer;
