@@ -38,7 +38,7 @@ const PostCard = ({ post }: Props) => {
   }
 
   return (
-    <Card height={"340px"}>
+    <Card>
       <CardHeader>
         <Heading size="md">{post.title}</Heading>
       </CardHeader>
