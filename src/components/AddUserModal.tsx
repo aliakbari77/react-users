@@ -15,11 +15,13 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  useToast,
 } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
 
 const schema = z.object({
   userName: z.string().min(3),
@@ -37,6 +39,7 @@ interface Props {
 const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
   const userNameRef = React.useRef(null);
   const finalRef = React.useRef(null);
+  const toast = useToast();
 
   const {
     handleSubmit,
@@ -48,7 +51,34 @@ const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    onClose();
+    axios
+      .post("https://jsonplaceholder.typicode.com/users/", {
+        id: Date.now(),
+        name: data.userName,
+        email: data.email,
+      })
+      .then((res) => {
+        console.log(res);
+        onClose();
+        toast({
+          title: "User created",
+          description: "New user is created but not store at database.",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        onClose();
+        toast({
+          title: "Account not created",
+          description: "There is a problem at creating a user.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      });
   };
 
   return (
@@ -99,3 +129,6 @@ const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
 };
 
 export default AddUserModal;
+function usePostData(arg0: string) {
+  throw new Error("Function not implemented.");
+}

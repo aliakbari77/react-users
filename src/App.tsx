@@ -24,6 +24,7 @@ export interface PostQuery {
 function App() {
   const [postQuery, setPostQuery] = useState<PostQuery>({} as PostQuery);
   const [userSelected, setUserSelected] = useState<User>({} as User);
+
   const {
     isOpen: isOpenAddUserModal,
     onOpen: onOpenAddUserModal,
@@ -62,8 +63,8 @@ function App() {
               <PostHeading user={userSelected} />
             </Box>
             <ButtonGroup padding={4}>
-              <Button onClick={onOpenAddUserModal}>Add User</Button>
-              <Button onClick={onOpenAddPostModal}>Add Post</Button>
+              <Button onClick={onOpenAddUserModal} colorScheme="teal">Add User</Button>
+              <Button onClick={onOpenAddPostModal} colorScheme="blue">Add Post</Button>
             </ButtonGroup>
           </HStack>
           <PostGrid postQuery={postQuery} />
