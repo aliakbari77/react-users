@@ -111,7 +111,7 @@ const AddPostModal = ({ isOpen, onOpen, onClose, post }: Props) => {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Add Post</ModalHeader>
+          <ModalHeader>Edit Post</ModalHeader>
           <ModalCloseButton />
           <Divider />
           <ModalBody pb={6}>
