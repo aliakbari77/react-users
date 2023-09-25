@@ -18,6 +18,7 @@ import {
 import { AiOutlineEdit, AiOutlineHeart } from "react-icons/ai";
 import { FaRegCommentDots } from "react-icons/fa";
 import AddPostModal from "./AddPostModal";
+import EditPostModal from "./EditPostModal";
 
 interface Props {
 	post: Post;
@@ -72,7 +73,7 @@ const PostCard = ({ post }: Props) => {
 					</ButtonGroup>
 				</CardFooter>
 			</Card>
-      <AddPostModal onClose={onClose} onOpen={onOpen} isOpen={isOpen} post={post}/>
+      <EditPostModal onClose={onClose} onOpen={onOpen} isOpen={isOpen} post={post}/>
 		</>
 	);
 };
