@@ -16,6 +16,7 @@ import {
   AlertIcon,
   AlertTitle,
   useToast,
+  Divider,
 } from "@chakra-ui/react";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -92,6 +93,7 @@ const AddUserModal = ({ isOpen, onOpen, onClose }: Props) => {
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Add User</ModalHeader>
+          <Divider/>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <form onSubmit={handleSubmit(onSubmit)}>
