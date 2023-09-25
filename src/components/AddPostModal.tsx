@@ -23,6 +23,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import useUsers from "../hooks/useUsers";
 import axios from "axios";
+import { Post } from "./PostGrid";
 
 const schema = z.object({
 	title: z.string().min(3),
@@ -36,9 +37,10 @@ interface Props {
 	isOpen: boolean;
 	onOpen: () => void;
 	onClose: () => void;
+	post?: Post;
 }
 
-const AddPostModal = ({ isOpen, onOpen, onClose }: Props) => {
+const AddPostModal = ({ isOpen, onOpen, onClose, post }: Props) => {
 	const userNameRef = React.useRef(null);
 	const finalRef = React.useRef(null);
 	const { data: users, isLoading, error } = useUsers();
@@ -55,7 +57,7 @@ const AddPostModal = ({ isOpen, onOpen, onClose }: Props) => {
 	const onSubmit = (data: any) => {
 		console.log(data);
 		axios
-			.post("https://jsonplaceholder.typicode.com/posxts", {
+			.post("https://jsonplaceholder.typicode.com/posts", {
 				title: data.title,
 				body: data.body,
 				userId: parseInt(data.userId),
